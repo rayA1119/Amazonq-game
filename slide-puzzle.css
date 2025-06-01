@@ -1,0 +1,385 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+body {
+    background-color: #a8e6cf;
+    color: #3d405b;
+    background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 36px;
+    color: #3d405b;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #ffd3b6;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.game-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 12px;
+    width: 100%;
+    max-width: 480px;
+    height: 480px;
+    background-color: #ffaaa5;
+    border-radius: 15px;
+    padding: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.tile {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    color: #3d405b;
+}
+
+.tile::before {
+    content: "";
+    display: block;
+    width: 70%;
+    height: 70%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 5px;
+}
+
+.tile-2::before {
+    background-image: url('https://img.icons8.com/color/96/000000/rabbit.png');
+}
+
+.tile-4::before {
+    background-image: url('https://img.icons8.com/color/96/000000/cat.png');
+}
+
+.tile-8::before {
+    background-image: url('https://img.icons8.com/color/96/000000/dog.png');
+}
+
+.tile-16::before {
+    background-image: url('https://img.icons8.com/color/96/000000/fox.png');
+}
+
+.tile-32::before {
+    background-image: url('https://img.icons8.com/color/96/000000/wolf.png');
+}
+
+.tile-64::before {
+    background-image: url('https://img.icons8.com/color/96/000000/lion.png');
+}
+
+.tile-128::before {
+    background-image: url('https://img.icons8.com/color/96/000000/elephant.png');
+}
+
+.tile-256::before {
+    background-image: url('https://img.icons8.com/color/96/000000/giraffe.png');
+}
+
+.tile-512::before {
+    background-image: url('https://img.icons8.com/color/96/000000/rhino.png');
+}
+
+.tile-1024::before {
+    background-image: url('https://img.icons8.com/color/96/000000/dragon.png');
+}
+
+.tile-2048::before {
+    background-image: url('https://img.icons8.com/color/96/000000/unicorn.png');
+}
+
+.tile-super::before {
+    background-image: url('https://img.icons8.com/color/96/000000/phoenix.png');
+}
+
+.empty {
+    background-color: rgba(255, 255, 255, 0.35);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #ff8b94;
+    color: white;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #ff6b74;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.instructions {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 16px;
+    line-height: 1.6;
+    background-color: #ffd3b6;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.new-tile {
+    animation: appear 0.3s ease-in-out;
+}
+
+@keyframes appear {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .game-board {
+        height: 360px;
+        max-width: 360px;
+    }
+    
+    .tile {
+        font-size: 18px;
+    }
+    
+    .tile-128, .tile-256, .tile-512 {
+        font-size: 16px;
+    }
+    
+    .tile-1024, .tile-2048, .tile-super {
+        font-size: 14px;
+    }
+}
+.tile-128, .tile-256, .tile-512 {
+    font-size: 22px;
+}
+
+.tile-1024, .tile-2048, .tile-super {
+    font-size: 18px;
+}
+.tile-2 {
+    background-color: #dcedc1;
+}
+
+.tile-4 {
+    background-color: #ffd3b6;
+}
+
+.tile-8 {
+    background-color: #ffaaa5;
+}
+
+.tile-16 {
+    background-color: #ff8b94;
+}
+
+.tile-32 {
+    background-color: #a8e6cf;
+}
+
+.tile-64 {
+    background-color: #a8d8ea;
+}
+
+.tile-128 {
+    background-color: #aa96da;
+}
+
+.tile-256 {
+    background-color: #fcbad3;
+}
+
+.tile-512 {
+    background-color: #ffffd2;
+}
+
+.tile-1024 {
+    background-color: #c7ceea;
+}
+
+.tile-2048 {
+    background-color: #fdffab;
+}
+
+.tile-super {
+    background-color: #ffb7ce;
+}
+.hide {
+    display: none !important;
+}
+
+.result-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.result-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    animation: pop-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 5px solid #ffaaa5;
+}
+
+.result-content h2 {
+    color: #3d405b;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.result-stats {
+    background-color: #ffd3b6;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.result-stats p {
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#play-again {
+    margin-top: 10px;
+    font-size: 20px;
+    padding: 12px 30px;
+}
+
+@keyframes pop-in {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+/* タイルの移動アニメーション */
+@keyframes slide-up {
+    0% { transform: translateY(10px); opacity: 0.8; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slide-down {
+    0% { transform: translateY(-10px); opacity: 0.8; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slide-left {
+    0% { transform: translateX(10px); opacity: 0.8; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slide-right {
+    0% { transform: translateX(-10px); opacity: 0.8; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+.slide-up {
+    animation: slide-up 0.2s ease-out;
+}
+
+.slide-down {
+    animation: slide-down 0.2s ease-out;
+}
+
+.slide-left {
+    animation: slide-left 0.2s ease-out;
+}
+
+.slide-right {
+    animation: slide-right 0.2s ease-out;
+}
+
+/* タイルの合体アニメーション */
+@keyframes merge {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.merge {
+    animation: merge 0.3s ease-in-out;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>動物合体パズル</title>
+    <link rel="stylesheet" href="slide-puzzle.css">
+</head>
+<body>
+    <div class="container">
+        <h1>動物合体パズル</h1>
+        <div class="game-info">
+            <div class="score">スコア: <span id="score">0</span></div>
+            <div class="moves">残り操作回数: <span id="moves">100</span></div>
+        </div>
+        <div class="game-container">
+            <div class="game-board" id="game-board"></div>
+        </div>
+        <div class="controls">
+            <button id="new-game">新しいゲーム</button>
+            <div class="instructions">
+                <p>矢印キーでタイルを動かしてください</p>
+                <p>同じ動物のタイルがぶつかると進化します</p>
+                <p>100回操作後のスコアを競います</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="slide-puzzle.js"></script>
+</body>
+</html>
